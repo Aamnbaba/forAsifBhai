@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QA Check Form (Solehri Brothers)</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+    />
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #ffe2bc; /* Lightest color for background */
+        color: #1e272e; /* Dark text for readability */
+      }
+      .logo-container {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      .logo-solehri {
+        color: #58b4ae; /* Primary color for "Solehri" */
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+      .logo-brothers {
+        color: #000000; /* Third color for "Brothers" */
+        font-size: 1.5em;
+      }
+      .form-title {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #0c6862; /* Primary color for title */
+      }
+      .form-label {
+        color: #8f5215; /* Third color for labels */
+      }
+      .form-control,
+      .form-select {
+        background-color: #ffffff; /* White input background for contrast */
+        color: #1e272e;
+        border-color: #58b4ae; /* Primary color for input border */
+      }
+      .form-control:focus,
+      .form-select:focus {
+        border-color: #ffe277; /* Secondary color for focused input border */
+        box-shadow: 0 0 0 0.2rem rgba(255, 226, 119, 0.25); /* Secondary color focus shadow */
+      }
+      .btn-primary {
+        background-color: #58b4ae; /* Primary color for button */
+        border-color: #58b4ae;
+        color: #ffffff;
+      }
+      .btn-primary:hover,
+      .btn-primary:focus {
+        background-color: #40807a; /* Darker shade for hover/focus */
+        border-color: #40807a;
+      }
+      .border {
+        border-color: #ffb367 !important; /* Third color for checklist border */
+      }
+      .form-text {
+        color: #777777; /* Gray for form text */
+      }
+      .flatpickr-input {
+        background-color: #ffffff !important;
+        color: #1e272e !important;
+      }
+      .flatpickr-calendar {
+        background: #ffffff !important;
+        color: #1e272e !important;
+        border-color: #58b4ae !important;
+      }
+      .flatpickr-day {
+        color: #1e272e !important;
+      }
+      .flatpickr-day.selected,
+      .flatpickr-day.startRange,
+      .flatpickr-day.endRange,
+      .flatpickr-day.today.selected,
+      .flatpickr-day.today.startRange,
+      .flatpickr-day.today.endRange,
+      .flatpickr-day:hover {
+        background: #ffe277 !important;
+        color: #1e272e !important;
+        border-color: transparent !important;
+      }
+      .flatpickr-current-month .flatpickr-monthDropdown-months,
+      .flatpickr-current-month .flatpickr-yearDropdown-years.cur-year {
+        background: #ffffff !important;
+        color: #1e272e !important;
+      }
+      .flatpickr-time input {
+        background: transparent !important;
+        color: #1e272e !important;
+        border-color: #58b4ae !important;
+      }
+      .flatpickr-am-pm {
+        color: #1e272e !important;
+        background: transparent !important;
+      }
+    </style>
+  </head>
+  <body class="container py-5">
+    <div class="logo-container">
+      <h2>
+        <span class="logo-solehri">SOLEHRI</span
+        ><span class="logo-brothers">BROTHERS</span>
+      </h2>
+    </div>
+    <h1 class="form-title">QA Check Form</h1>
+    <form action="generate_report.php" method="post" target="_blank">
+      <div class="mb-3">
+        <label for="date" class="form-label">1. Date:</label>
+        <input
+          type="text"
+          class="form-control flatpickr-input"
+          id="date"
+          name="date"
+          placeholder="Choose Date"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="productName" class="form-label"
+          >2. Product/Item Name:</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="productName"
+          name="productName"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="batchPoNumber" class="form-label"
+          >3. Batch Number / PO Number:</label
+        >
+        <input
+          type="text"
+          class="form-control"
+          id="batchPoNumber"
+          name="batchPoNumber"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="inspectedBy" class="form-label">4. Inspected By:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="inspectedBy"
+          name="inspectedBy"
+          required
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">5. QA Checklist:</label>
+        <div class="border p-3 rounded">
+          <div class="mb-2">
+            <label for="specifications" class="form-label"
+              >Product matches specifications?</label
+            >
+            <select
+              class="form-select"
+              id="specifications"
+              name="specifications"
+            >
+              <option value="">Choose...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="n/a">N/A</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="packaging" class="form-label"
+              >Packaging is intact and clean?</label
+            >
+            <select class="form-select" id="packaging" name="packaging">
+              <option value="">Choose...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="n/a">N/A</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="labeling" class="form-label"
+              >Labeling is correct?</label
+            >
+            <select class="form-select" id="labeling" name="labeling">
+              <option value="">Choose...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="n/a">N/A</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="quantity" class="form-label"
+              >Quantity matches PO?</label
+            >
+            <select class="form-select" id="quantity" name="quantity">
+              <option value="">Choose...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="n/a">N/A</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="damage" class="form-label"
+              >No visible damage or defects?</label
+            >
+            <select class="form-select" id="damage" name="damage">
+              <option value="">Choose...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="n/a">N/a</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="functionalTest" class="form-label"
+              >Functional test passed (if applicable)?</label
+            >
+            <select
+              class="form-select"
+              id="functionalTest"
+              name="functionalTest"
+            >
+              <option value="">Choose...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="n/a">N/A</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="documentation" class="form-label"
+              >Proper documentation attached?</label
+            >
+            <select class="form-select" id="documentation" name="documentation">
+              <option value="">Choose...</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="n/a">N/A</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="remarks" class="form-label">6. Remarks / Comments:</label>
+        <textarea
+          class="form-control"
+          id="remarks"
+          name="remarks"
+          rows="3"
+        ></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="status" class="form-label">7. Status:</label>
+        <select class="form-select" id="status" name="status" required>
+          <option value="">Choose one...</option>
+          <option value="approved">Approved</option>
+          <option value="rejected">Rejected</option>
+          <option value="hold">Hold for Rework</option>
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Print</button>
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+      flatpickr(".flatpickr-input", {
+        dateFormat: "Y-m-d",
+        placeholder: "Choose Date",
+      });
+    </script>
+  </body>
+</html>
